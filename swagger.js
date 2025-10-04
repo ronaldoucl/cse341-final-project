@@ -5,8 +5,8 @@ const doc = {
         title: 'Users Api',
         description: 'Users Api'
     },
-    host: 'localhost:3000',
-    schemes: ['http']
+    host: 'cse341-final-project-izpp.onrender.com',
+    schemes: ['https']
 }
 
 const outputFile = "./swagger.json";

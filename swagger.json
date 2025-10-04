@@ -1,46 +1,16 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Users Api",
-    "description": "Users Api",
+    "title": "Lucas & Lucas API",
+    "description": "CSE341 - Final Project - Ronaldo Campos and Lucas Castillo",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
+  "host": "cse341-final-project-izpp.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
-    "/login": {
-      "get": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
-    "/logout": {
-      "get": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
-    "/api-docs": {
-      "get": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
     "/movies/": {
       "get": {
         "tags": [

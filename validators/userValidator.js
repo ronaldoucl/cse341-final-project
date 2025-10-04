@@ -28,7 +28,7 @@ const createUserValidation = [
 const updateUserValidation = [
   body("username").optional().isString(),
   body("email").optional().isEmail(),
-  body("password").isLength({ min: 6 }).withMessage("Password must be at least 6 characters long."),
+  body("password").optional().isLength({ min: 6 }).withMessage("Password must be at least 6 characters long."),
   body("phone").optional().isString(),
   body("address").optional().isString(),
 ];
