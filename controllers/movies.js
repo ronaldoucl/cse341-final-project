@@ -69,7 +69,10 @@ const createMovie = async (req, res) => {
     return res.status(500).json({ error: "Error creating movie." });
   }
 
-  res.status(201).json({ id: response.insertedId, ...movie });
+  res.status(201).json({
+    message: "Movie created successfully",
+    id: response.insertedId,
+  });
 };
 
 /**

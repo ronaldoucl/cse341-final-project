@@ -55,8 +55,30 @@ passport.deserializeUser((user, done) => {
   done(null, user);
 });
 
-app.get('/', (req, res) => {
-  res.send(req.session.user !== undefined ? `Logged in as ${req.session.user.displayName}` : 'Logged Out');
+app.get("/", (req, res) => {
+  if (req.session.user) {
+    res.send(`
+      <html>
+        <head><title>Status</title></head>
+        <body style="font-family: Arial; text-align: center; margin-top: 50px;">
+          <h1 style="color: green;">✅ Logged in</h1>
+          <p>Welcome, <strong>${req.session.user.displayName}</strong>!</p>
+          <a href="/logout">Logout</a>
+        </body>
+      </html>
+    `);
+  } else {
+    const baseUrl = `${req.protocol}://${req.get("host")}`;
+    res.send(`
+      <html>
+        <head><title>Status</title></head>
+        <body style="font-family: Arial; text-align: center; margin-top: 50px;">
+          <h1 style="color: red;">❌ Logged Out</h1>
+          <a href="${baseUrl}/login">Login with GitHub</a>
+        </body>
+      </html>
+    `);
+  }
 });
 
 app.get("/github/callback", passport.authenticate("github", {
@@ -67,13 +89,12 @@ app.get("/github/callback", passport.authenticate("github", {
   }
 )
 
-
 mongodb.initDb((err) => {
     if(err) {
         console.error("Error connecting to DB:", err);
     } else {
         app.listen(port, () => {
-            console.log(`Database is listening and node Running on port ${port}`)
+            console.log(`Database is listening and node Running on port ${port}!\nGood Luck!`)
         })
     }
 });

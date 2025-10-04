@@ -77,7 +77,10 @@ const createUser = async (req, res) => {
   // Do not return password in response
   const { password, ...safeUser } = user;
 
-  res.status(201).json({ id: response.insertedId, ...safeUser });
+  res.status(201).json({
+      message: "User created successfully",
+      id: response.insertedId,
+    });
 };
 
 /**

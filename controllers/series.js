@@ -69,7 +69,10 @@ const createSeries = async (req, res) => {
     return res.status(500).json({ error: "Error creating series." });
   }
 
-  res.status(201).json({ id: response.insertedId, ...serie });
+  res.status(201).json({
+      message: "Series created successfully",
+      id: response.insertedId,
+    });
 };
 
 /**

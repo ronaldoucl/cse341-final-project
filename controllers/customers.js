@@ -51,12 +51,12 @@ const getSingle = async (req, res) => {
 const createCustomer = async (req, res) => {
   //#swagger.tags=['Customers']
   const customer = {
-    name: req.body.name,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
     email: req.body.email, 
-    phone: req.body.phone ?? "", 
-    address: req.body.address ?? "",
-    notes: req.body.notes ?? "",
-    active: req.body.active ?? true,
+    phone: req.body.phone, 
+    address: req.body.address,
+    active: req.body.active,
     createdAt: new Date(),
   };
 
@@ -69,7 +69,10 @@ const createCustomer = async (req, res) => {
     return res.status(500).json({ error: "Error creating customer." });
   }
 
-  res.status(201).json({ id: response.insertedId, ...customer });
+  res.status(201).json({
+    message: "Customer created successfully",
+    id: response.insertedId,
+  });
 };
 
 /**
@@ -88,11 +91,11 @@ const updateCustomer = async (req, res) => {
   const customerId = new ObjectId(id);
 
   const updateFields = {
-    name: req.body.name,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
     email: req.body.email,
     phone: req.body.phone, 
     address: req.body.address,
-    notes: req.body.notes,
     active: req.body.active,
     updatedAt: new Date(),
   };

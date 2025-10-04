@@ -7,8 +7,8 @@ const { isAuthenticated } = require("../middleware/authenticate");
 
 router.get("/", customersController.getAll);
 router.get("/:id", customersController.getSingle);
-router.post("/", isAuthenticated, createCustomerValidation, validate, customersController.createUser);
-router.put("/:id", isAuthenticated, updateCustomerValidation, validate, customersController.updateUser);
-router.delete("/:id", isAuthenticated, deleteCustomerValidation, validate, customersController.deleteUser);
+router.post("/", isAuthenticated, createCustomerValidation, validate, customersController.createCustomer);
+router.put("/:id", isAuthenticated, updateCustomerValidation, validate, customersController.updateCustomer);
+router.delete("/:id", isAuthenticated, deleteCustomerValidation, validate, customersController.deleteCustomer);
 
 module.exports = router;

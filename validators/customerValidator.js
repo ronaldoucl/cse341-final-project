@@ -2,52 +2,84 @@
  * @author Ronaldo Campos
  */
 
-const { body } = require("express-validator");
+const { body, param } = require("express-validator");
 
 const createCustomerValidation = [
-  body("name")
-    .isString()
-    .notEmpty()
-    .withMessage("Name is required and must be a string."),
+  body("firstName")
+    .trim()
+    .notEmpty().withMessage("First Name is required.")
+    .isString().withMessage("First Name must be a string.")
+    .isLength({ min: 2, max: 100 }).withMessage("Name must be between 2 and 100 characters."),
+
+  body("lastName")
+    .trim()
+    .notEmpty().withMessage("Last Name is required.")
+    .isString().withMessage("Last Name must be a string.")
+    .isLength({ min: 2, max: 100 }).withMessage("Name must be between 2 and 100 characters."),    
+
   body("email")
-    .isEmail()
-    .notEmpty()
-    .withMessage("Valid email is required."),
+    .trim()
+    .notEmpty().withMessage("Email is required.")
+    .isEmail().withMessage("Email must be valid."),
+
   body("phone")
     .optional()
-    .isString()
-    .withMessage("Phone must be a string."),
+    .trim()
+    .matches(/^[0-9+\-()\s]{7,20}$/).withMessage("Phone must contain only numbers, spaces, +, -, () and be 7–20 characters long."),
+
   body("address")
     .optional()
-    .isString()
-    .withMessage("Address must be a string."),
-  body("notes")
-    .optional()
-    .isString()
-    .withMessage("Notes must be a string."),
+    .trim()
+    .isString().withMessage("Address must be a string.")
+    .isLength({ max: 200 }).withMessage("Address cannot exceed 200 characters."),
+
   body("active")
     .optional()
-    .isBoolean()
-    .withMessage("Active must be true or false."),
+    .isBoolean().withMessage("Active must be true or false."),
 ];
 
 const updateCustomerValidation = [
-  body("name").optional().isString(),
-  body("email").optional().isEmail(),
-  body("phone").optional().isString(),
-  body("address").optional().isString(),
-  body("notes").optional().isString(),
-  body("active").optional().isBoolean(),
+  body("firstName")
+    .optional()
+    .trim()
+    .isString().withMessage("First Name must be a string.")
+    .isLength({ min: 2, max: 100 }).withMessage("Name must be between 2 and 100 characters."),
+
+  body("lastName")
+    .optional()
+    .trim()
+    .isString().withMessage("Last Name must be a string.")
+    .isLength({ min: 2, max: 100 }).withMessage("Name must be between 2 and 100 characters."),
+
+  body("email")
+    .optional()
+    .trim()
+    .isEmail().withMessage("Email must be valid."),
+
+  body("phone")
+    .optional()
+    .trim()
+    .matches(/^[0-9+\-()\s]{7,20}$/).withMessage("Phone must contain only numbers, spaces, +, -, () and be 7–20 characters long."),
+
+  body("address")
+    .optional()
+    .trim()
+    .isString().withMessage("Address must be a string.")
+    .isLength({ max: 200 }).withMessage("Address cannot exceed 200 characters."),
+
+  body("active")
+    .optional()
+    .isBoolean().withMessage("Active must be true or false."),
 ];
 
 const deleteCustomerValidation = [
   param("id")
-    .isMongoId()
-    .withMessage("Invalid customer ID format."),
+    .notEmpty().withMessage("Customer ID is required.")
+    .isMongoId().withMessage("Invalid customer ID format."),
 ];
 
 module.exports = {
   createCustomerValidation,
   updateCustomerValidation,
-  deleteCustomerValidation
+  deleteCustomerValidation,
 };
