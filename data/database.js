@@ -1,20 +1,26 @@
+const { DATABASE } = require("../config/constants");
+
 const dotenv = require("dotenv");
-const DATABASE_NAME = "finalproject"
 dotenv.config();
 
+// Import MongoDB client for establishing connections
 const MongoClient = require("mongodb").MongoClient;
 
 let database;
 
+/**
+ * Initializes the MongoDB connection if not already initialized.
+ * Ensures a single shared instance of the database is used across the app.
+ */
 const initDb = (callback) => {
     if (database) {
-        console.log("DB is already initialized!");
+        console.log(`DB '${DATABASE.NAME}' is already initialized!`);
         return callback(null, database);
     }
     MongoClient.connect(process.env.MONGODB_URL)
         .then((client) => {
-            database = client.db(DATABASE_NAME);
-            console.log("Database connected!");
+            database = client.db(DATABASE.NAME);
+            console.log(`Database '${DATABASE.NAME}' connected!`);
             callback(null, database);
         })
         .catch((err) => {
@@ -22,9 +28,15 @@ const initDb = (callback) => {
         });
 };
 
+/**
+ * Retrieves the active MongoDB instance.
+ * Throws an error if the database has not been initialized.
+ * 
+ * @returns {Object} MongoDB database instance
+ */
 const getDatabase = () => {
     if (!database) {
-        throw Error("Database not initialized");
+        throw Error(`Database '${DATABASE.NAME}' not initialized`);
     }
     return database;
 };

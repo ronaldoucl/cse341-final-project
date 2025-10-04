@@ -1,3 +1,8 @@
+/**
+ * @author Ronaldo Campos
+ * @author Lucas Castillo
+ */
+
 const express = require("express");
 const mongodb = require("./data/database.js");
 const cors = require("cors");
