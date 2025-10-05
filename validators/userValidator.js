@@ -15,9 +15,11 @@ const createUserValidation = [
   body("password")
     .isLength({ min: 6 })
     .withMessage("Password must be at least 6 characters long."),
-  body("phone")
+ body("phone")
     .optional()
+    .trim()
     .isString()
+    .matches(/^[0-9+\-()\s]{7,20}$/).withMessage("Phone must contain only numbers, spaces, +, -, () and be 7–20 characters long.")
     .withMessage("Phone must be a string."),
   body("address")
     .optional()
