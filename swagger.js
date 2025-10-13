@@ -1,11 +1,12 @@
 const swaggetAutogen = require("swagger-autogen")();
 
+// Swagger configuration
 const doc = {
     info: {
         title: 'Users Api',
         description: 'Users Api'
     },
-    host: 'cse341-final-project-izpp.onrender.com',
+    host: 'https://cse341-final-project-izpp.onrender.com',
     schemes: ['https']
 }
 

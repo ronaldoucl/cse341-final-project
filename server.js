@@ -3,6 +3,7 @@
  * @author Lucas Castillo
  */
 
+require("dotenv").config();
 const express = require("express");
 const mongodb = require("./data/database.js");
 const cors = require("cors");
@@ -24,9 +25,9 @@ app
   .use(passport.initialize())
   .use(passport.session())
   .use((req, res, next) => {
-    res.setHeader("Access-Controll-Allow-Origin", "*")
+    res.setHeader("Access-Control-Allow-Origin", "*")
     res.setHeader(
-      "Access-Controll-Allow-Headers",
+      "Access-Control-Allow-Headers",
       "POST, GET, PUT, PATCH, OPTIONS, DELETE"
     );
     next();
@@ -98,3 +99,6 @@ mongodb.initDb((err) => {
         })
     }
 });
+
+// For testing purposes
+module.exports = app; 
