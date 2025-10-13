@@ -15,12 +15,6 @@ beforeAll((done) => {
   });
 });
 
-afterAll(async () => {
-  const database = db.getDb();
-  if (database && database.client) {
-    await database.client.close();
-  }
-});
 
 describe('GET Endpoints', () => {
   it('GET /series should return 200 and an array', async () => {
