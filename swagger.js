@@ -6,7 +6,7 @@ const doc = {
         title: 'Users Api',
         description: 'Users Api'
     },
-    host: 'https://cse341-final-project-izpp.onrender.com',
+    host: 'cse341-final-project-izpp.onrender.com',
     schemes: ['https']
 }
 
