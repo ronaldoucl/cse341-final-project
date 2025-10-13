@@ -1,0 +1,54 @@
+# =====================================================
+# MOVIES REST API
+# Author: Ronaldo Campos and Lucas Castillo
+# =====================================================
+
+### Get all movies
+GET http://localhost:3000/movies
+Accept: application/json
+
+###
+
+### Get movie by ID
+GET http://localhost:3000/movies/68d12ac40706a8ca2a62d4a1
+Accept: application/json
+
+###
+
+### Create a new movie
+POST http://localhost:3000/movies
+Content-Type: application/json
+Accept: application/json
+
+{
+  "title": "Inception",
+  "director": "Christopher Nolan",
+  "genre": "Science Fiction",
+  "releaseYear": 2010,
+  "rating": 8.8,
+  "description": "A skilled thief who steals corporate secrets through dream-sharing technology is given a chance at redemption.",
+  "available": true
+}
+
+###
+
+### Update an existing movie
+PUT http://localhost:3000/movies/68d12bf20706a8ca2a62d4c7
+Content-Type: application/json
+Accept: application/json
+
+{
+  "title": "Inception (Director’s Cut)",
+  "director": "Christopher Nolan",
+  "genre": "Science Fiction / Thriller",
+  "releaseYear": 2010,
+  "rating": 9.0,
+  "description": "Updated version with extended dream sequences and enhanced visual effects.",
+  "available": true
+}
+
+###
+
+### Delete a movie
+DELETE http://localhost:3000/movies/68d12ac40706a8ca2a62d4a1
+Accept: application/json

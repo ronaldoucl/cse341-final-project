@@ -1,0 +1,54 @@
+# =====================================================
+# SERIES REST API
+# Author: Ronaldo Campos and Lucas Castillo
+# =====================================================
+
+### Get all series
+GET http://localhost:3000/series
+Accept: application/json
+
+###
+
+### Get series by ID
+GET http://localhost:3000/series/68d24bc40706a8ca2a62d5f3
+Accept: application/json
+
+###
+
+### Create a new series
+POST http://localhost:3000/series
+Content-Type: application/json
+Accept: application/json
+
+{
+  "title": "Breaking Bad",
+  "genre": "Drama, Crime, Thriller",
+  "seasons": 5,
+  "episodes": 62,
+  "description": "A high school chemistry teacher turns to a life of crime after being diagnosed with cancer.",
+  "releaseYear": 2008,
+  "available": true
+}
+
+###
+
+### Update an existing series
+PUT http://localhost:3000/series/68d24bf10706a8ca2a62d604
+Content-Type: application/json
+Accept: application/json
+
+{
+  "title": "Breaking Bad (Remastered)",
+  "genre": "Drama, Crime, Thriller",
+  "seasons": 5,
+  "episodes": 63,
+  "description": "Remastered edition with improved visual effects and one new episode.",
+  "releaseYear": 2008,
+  "available": true
+}
+
+###
+
+### Delete a series
+DELETE http://localhost:3000/series/68d24bc40706a8ca2a62d5f3
+Accept: application/json
