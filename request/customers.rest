@@ -1,0 +1,65 @@
+# =====================================================
+# CUSTOMERS REST API
+# Author: Ronaldo Campos and Lucas Castillo
+# =====================================================
+
+### Exchange GitHub code for access_token
+POST https://github.com/login/oauth/access_token
+Content-Type: application/json
+Accept: application/json
+
+{
+  "client_id": "Ov23liVQgnf52QBjEpXk",
+  "client_secret": "ee5515c7273be52716e33bb3ddc2bb878023986f",
+  "code": "abcdef12345" 
+}
+
+### Get all customers
+GET http://localhost:3000/customers
+Accept: application/json
+
+### Get customer by ID
+GET http://localhost:3000/customers/68e208dc70bd429a9b5e9ad7
+Accept: application/json
+
+### Get customer by ID (INCORRECT)
+GET http://localhost:3000/customers/HHGFHGFHGFHGFH
+Accept: application/json
+
+###
+
+### Create a new customer
+POST http://localhost:3000/customers
+Content-Type: application/json
+Accept: application/json
+
+{
+  "firstName": "Lucas",
+  "lastName": "Müller",
+  "email": "lucas.mueller@example.de",
+  "phone": "+49-171-555-6666",
+  "address": "Hauptstrasse 45, Berlin, Germany",
+  "active": true
+}
+
+###
+
+### Update an existing customer
+PUT http://localhost:3000/customers
+Content-Type: application/json
+Accept: application/json
+
+{
+  "firstName": "Sophie",
+  "lastName": "Johnson",
+  "email": "s.dubois@example.fr",
+  "phone": "+33-1-44-55-66-77",
+  "address": "12 Rue Lafayette, Paris, France",
+  "active": true
+}
+
+###
+
+### Delete a customer
+DELETE http://localhost:3000/customers/68cf9cf40706a8ca2a62d2e9
+Accept: application/json
